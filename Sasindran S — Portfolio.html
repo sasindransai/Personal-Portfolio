@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sasindran S — Senior Odoo Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-900:#0B0E20; --ink-800:#12162E; --ink-700:#1B2142;
+    --teal:#2FD3BD; --gold:#F2B84B;
+    --text:#F5F6FA; --text-dim:#AEB4C9; --line:rgba(255,255,255,.09);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:inherit; margin:0; padding:0;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px); scroll-behavior:smooth;}
+  body{
+    background:var(--ink-900); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Poppins',system-ui,sans-serif;}
+  a{color:var(--teal); text-decoration:none;}
+  .wrap{max-width:980px; margin:0 auto; padding:0 24px;}
+  section{padding:80px 0;}
+  .divider{height:1px; background:var(--line); max-width:980px; margin:0 auto;}
+
+  /* Hero */
+  .hero{
+    position:relative; padding:120px 0 100px; overflow:hidden;
+    background:
+      radial-gradient(600px 300px at 85% 10%, rgba(47,211,189,.10), transparent 60%),
+      linear-gradient(135deg, var(--ink-800), var(--ink-900));
+  }
+  .hero svg.bgpath{position:absolute; top:0; left:0; width:100%; height:100%; opacity:.5; z-index:0;}
+  .hero .wrap{position:relative; z-index:1;}
+  .eyebrow{color:var(--teal); font-size:15px; font-weight:500; letter-spacing:.3px; margin-bottom:14px;}
+  .hero h1{font-size:clamp(34px,6vw,58px); font-weight:700; letter-spacing:.5px; margin-bottom:10px;}
+  .hero .role{font-size:clamp(18px,2.6vw,22px); color:var(--text-dim); font-weight:500; margin-bottom:28px;}
+  .hero p.lead{max-width:600px; color:var(--text-dim); font-size:16.5px; margin-bottom:34px;}
+  .btnrow{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:12px 22px; border-radius:8px; font-weight:600; font-size:14.5px;
+    border:1px solid var(--line);
+  }
+  .btn.primary{background:var(--teal); color:var(--ink-900); border-color:var(--teal);}
+  .btn.ghost{color:var(--text);}
+
+  /* Section headings */
+  .kicker{color:var(--teal); font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px;}
+  h2.title{font-size:clamp(24px,3.4vw,32px); font-weight:600; margin-bottom:28px;}
+
+  /* About */
+  .about p{color:var(--text-dim); font-size:16px; max-width:760px; margin-bottom:16px;}
+  .about p strong{color:var(--text); font-weight:600;}
+
+  /* Skills */
+  .skillgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px;}
+  .skillcard{border:1px solid var(--line); border-radius:10px; padding:18px 20px; background:var(--ink-800);}
+  .skillcard h3{font-size:14px; color:var(--teal); font-weight:600; margin-bottom:8px;}
+  .skillcard p{color:var(--text-dim); font-size:14px; line-height:1.55;}
+
+  /* Experience */
+  .timeline{border-left:2px solid var(--line); margin-left:6px;}
+  .role{position:relative; padding:0 0 34px 26px;}
+  .role:last-child{padding-bottom:0;}
+  .role::before{content:""; position:absolute; left:-7px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--ink-900); border:2px solid var(--teal);}
+  .role h3{font-size:18px; font-weight:600;}
+  .role .meta{color:var(--text-dim); font-size:13.5px; margin:4px 0 10px;}
+  .role ul{color:var(--text-dim); font-size:15px; padding-left:18px;}
+  .role li{margin-bottom:6px;}
+  .company{font-size:15px; color:var(--text-dim); margin-bottom:22px;}
+  .company strong{color:var(--text);}
+
+  /* Projects */
+  .projgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;}
+  .card{border:1px solid var(--line); border-radius:10px; padding:20px 22px; background:var(--ink-800); transition:border-color .15s ease;}
+  .card:hover{border-color:var(--teal);}
+  .card h3{font-size:16px; font-weight:600; margin-bottom:10px;}
+  .card ul{color:var(--text-dim); font-size:14px; padding-left:18px;}
+  .card li{margin-bottom:5px;}
+
+  /* Education / certs */
+  .edugrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
+  .edugrid .card p{color:var(--text-dim); font-size:14px; margin-top:4px;}
+
+  /* Footer */
+  footer{padding:70px 0 60px; text-align:center;}
+  footer h2{font-size:26px; font-weight:600; margin-bottom:12px;}
+  footer p{color:var(--text-dim); margin-bottom:26px;}
+  .contactrow{display:flex; justify-content:center; gap:24px; flex-wrap:wrap; font-size:14.5px; color:var(--text-dim);}
+  .contactrow span{color:var(--text);}
+  .langs{margin-top:40px; color:var(--text-dim); font-size:14px;}
+  .langs b{color:var(--text);}
+
+  @media (max-width:600px){
+    section{padding:56px 0;}
+    .hero{padding:90px 0 70px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="bgpath" viewBox="0 0 1000 500" preserveAspectRatio="xMaxYMid slice">
+    <path d="M -50 380 Q 150 300 250 340 T 450 260 T 650 300 T 900 120" fill="none" stroke="#2FD3BD" stroke-width="1.4" opacity=".35"/>
+    <circle cx="250" cy="340" r="4" fill="#2FD3BD" opacity=".6"/>
+    <circle cx="450" cy="260" r="4" fill="#2FD3BD" opacity=".6"/>
+    <circle cx="650" cy="300" r="9" fill="#12162E" stroke="#F2B84B" stroke-width="2.4"/>
+    <circle cx="650" cy="300" r="3" fill="#F2B84B"/>
+    <circle cx="900" cy="120" r="4" fill="#2FD3BD" opacity=".6"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">Kumbakonam, Tamil Nadu, India</div>
+    <h1>Sasindran S</h1>
+    <div class="role">Senior Odoo Developer · Odoo 18 Certified</div>
+    <p class="lead">I help organizations get more out of their Odoo ERP investment — turning complex business requirements into reliable, scalable systems, from first requirements call through to go-live and beyond.</p>
+    <div class="btnrow">
+      <a class="btn primary" href="mailto:sasindranshanmu@gmail.com">Get in touch</a>
+      <a class="btn ghost" href="http://linkedin.com/in/sasindran-s-956166212/" target="_blank" rel="noopener">View LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="about">
+  <div class="wrap">
+    <div class="kicker">About</div>
+    <h2 class="title">Capability, not just a stack</h2>
+    <p>Over the past <strong>4+ years</strong>, I've grown from hands-on development into a technical leadership role, where I now own projects end-to-end: understanding a client's business from the ground up, translating that into a clear technical roadmap, and seeing it through to a smooth, well-supported go-live.</p>
+    <p>I've led ERP migrations, integrated external platforms into core business workflows, and built solutions for real-time operational challenges across manufacturing, healthcare, e-commerce, and cybersecurity organizations — each with its own constraints and definition of "done." That variety has sharpened my ability to adapt quickly, ask the right questions early, and deliver solutions that hold up under real business pressure.</p>
+    <p>Beyond project work, I care about raising the bar for the teams I work with — training newer developers, setting technical direction, and being someone clients trust to tell them the truth, not just what's easiest to build.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Skills</div>
+    <h2 class="title">Core skills</h2>
+    <div class="skillgrid">
+      <div class="skillcard"><h3>Odoo Versions</h3><p>13, 15, 16, 17, 18, 19</p></div>
+      <div class="skillcard"><h3>Modules</h3><p>CRM, Sales, Purchase, Manufacturing, Inventory, Projects, Quality, HR, Website</p></div>
+      <div class="skillcard"><h3>Programming & Web</h3><p>Python, XML, SQL, HTML, CSS, XML-RPC</p></div>
+      <div class="skillcard"><h3>Database</h3><p>PostgreSQL, Microsoft SQL</p></div>
+      <div class="skillcard"><h3>Tools & Platforms</h3><p>Git, Odoo.sh, Linux (Ubuntu), PyCharm, pgAdmin</p></div>
+      <div class="skillcard"><h3>Integrations</h3><p>FedEx, Purolator, UPS, Amazon, HubSpot — via XML-RPC & API</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Experience</div>
+    <h2 class="title">Where I've grown</h2>
+    <div class="company"><strong>Navabrind IT Solutions Pvt Ltd</strong> — Kumbakonam, Tamil Nadu, India (Jul 2022 – Present)</div>
+    <div class="timeline">
+      <div class="role">
+        <h3>Senior Odoo Developer</h3>
+        <div class="meta">Aug 2026 – Present</div>
+        <ul>
+          <li>Building solutions and leading technical development and delivery across multiple concurrent client projects, serving as the primary point of contact for requirements, demos, and support.</li>
+          <li>Conduct internal Odoo technical training for fresher batches, strengthening team capability.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h3>Odoo Developer</h3>
+        <div class="meta">Jun 2025 – Jul 2026</div>
+        <ul>
+          <li>Delivered backend customizations and third-party API integrations across CRM, Sales, Purchase, Manufacturing, and Inventory modules.</li>
+          <li>Led Odoo version migrations, coordinating requirement gathering, demos, and UAT directly with clients.</li>
+        </ul>
+      </div>
+      <div class="role">
+        <h3>Jr. Odoo Developer</h3>
+        <div class="meta">Jul 2022 – Jun 2025</div>
+        <ul>
+          <li>Developed and supported custom Odoo modules, resolved bugs, and implemented workflow enhancements across client projects.</li>
+          <li>Assisted with data migrations, QWeb report development, and third-party API integrations.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Key Projects</div>
+    <h2 class="title">Selected client work</h2>
+    <div class="projgrid">
+      <div class="card">
+        <h3>Manufacturing & E-Commerce (Healthcare) — Canada/USA</h3>
+        <ul>
+          <li>Migrated Odoo 13 → 16 with minimal downtime</li>
+          <li>Built FedEx & Purolator integrations</li>
+          <li>Primary stakeholder contact for issue resolution</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Reseller Company — USA, Hong Kong, India</h3>
+        <ul>
+          <li>Customized Sales/Purchase/Inventory for a multi-company setup</li>
+          <li>Integrated HubSpot CRM with Odoo</li>
+          <li>Delivered client training & ongoing support</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Manufacturing & Retail — India</h3>
+        <ul>
+          <li>Ran GAP analysis to define Odoo workflows as Business Analyst</li>
+          <li>Migrated Odoo 15 → 17</li>
+          <li>Built a specialized customer management module</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Cybersecurity (200+ employees) — USA</h3>
+        <ul>
+          <li>Customized Employee, Appraisals, Survey & HR modules</li>
+          <li>Built a self-service employee portal, avoiding extra licensing</li>
+          <li>Migrated employee data via XML-RPC API</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Manufacturing Company — India</h3>
+        <ul>
+          <li>Resolved system issues and refined workflows</li>
+          <li>Migrated 2 years of accounting data from Tally ERP to Odoo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="kicker">Education & Certifications</div>
+    <h2 class="title">Background</h2>
+    <div class="edugrid">
+      <div class="card">
+        <h3>Master of Computer Applications</h3>
+        <p>Alagappa University (Distance) · Pursuing · 2024 – 2026</p>
+      </div>
+      <div class="card">
+        <h3>B.Sc., Computer Science</h3>
+        <p>PRIST University, Kumbakonam · 2019 – 2022</p>
+      </div>
+      <div class="card">
+        <h3>Odoo 18 Functional Certification</h3>
+        <p>Certified practitioner</p>
+      </div>
+    </div>
+    <div class="langs"><b>Languages:</b> Tamil, English</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p>Open to connecting with fellow ERP professionals, business leaders exploring Odoo, or teams looking to scale their implementation.</p>
+    <div class="contactrow">
+      <div>Email: <span>sasindranshanmu@gmail.com</span></div>
+      <div>Phone: <span>+91-9791643035</span></div>
+      <div>LinkedIn: <a href="http://linkedin.com/in/sasindran-s-956166212/" target="_blank" rel="noopener">sasindran-s</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
